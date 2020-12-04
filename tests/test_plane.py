@@ -67,6 +67,7 @@ class TestPlane:
         mock_random = MagicMock()
         mock_random.random_number = MagicMock(return_value=1)
         subject = Plane(fake_passenger_assignments, size_of_plane, mock_random)
-        result = subject.board()
+        subject.board()
+        result = subject.successful_board
         assert result is True
 

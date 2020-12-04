@@ -4,7 +4,7 @@ from src.random_wrapper import RandomWrapper
 class Plane:
     def __init__(self, passenger_assignments, plane_size, random_wrapper=None):
         self.passengers_assignments = passenger_assignments
-        self.available_seats = self._create_list_of_all_seats(plane_size)
+        self.available_seats = self.create_list_of_all_seats(plane_size)
         self.correct_placements = 0
         self.successful_board = False
         self.random_wrapper = random_wrapper or RandomWrapper()
@@ -15,7 +15,6 @@ class Plane:
             if self.is_first_passenger(passenger):
                 seat_chosen = self.pick_random_seat()
             self.take_seat(seat_chosen, passenger)
-        return self.successful_board
 
     def pick_random_seat(self):
         total_available_seats = len(self.available_seats)
@@ -41,9 +40,8 @@ class Plane:
             new_seat = self.pick_random_seat()
             self.take_seat(new_seat, passenger)
 
-
     @staticmethod
-    def _create_list_of_all_seats(plane_size):
+    def create_list_of_all_seats(plane_size):
         all_seats = []
         for i in range(plane_size):
             all_seats.append(i+1)
